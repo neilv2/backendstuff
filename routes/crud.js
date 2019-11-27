@@ -80,7 +80,20 @@ router.post('/', function (req, res, next) {
         else {
             res.json({id: results.insertId, values: req.body.parameters[0]});//or return count for 1 &amp;amp;amp; 0
         }
-    })};
+    })}
+    else{
+            
+        crud.procedure(req.body.ProcedureType, req.body.parameters, function (err, rows) {
+            if (err) {
+                res.json(err);
+            }
+            else {
+                res.json(rows);
+            }
+        })
+    }
+    
+    ;
 });
 
 router.delete('/', function (req, res, next) {
@@ -103,7 +116,19 @@ router.delete('/', function (req, res, next) {
             res.json({id: results.insertId, values: req.body.parameters[0]});
         }
 
-    })};
+    })}
+    else{
+            
+        crud.procedure(req.body.ProcedureType, req.body.parameters, function (err, rows) {
+            if (err) {
+                res.json(err);
+            }
+            else {
+                res.json(rows);
+            }
+        })
+    }
+    ;
 });
 
 router.put('/', function (req, res, next) {
@@ -123,7 +148,20 @@ router.put('/', function (req, res, next) {
         else {
             res.json(results);
         }
-    })};
+    })}
+    else{
+            
+        crud.procedure(req.body.ProcedureType, req.body.parameters, function (err, rows) {
+            if (err) {
+                res.json(err);
+            }
+            else {
+                res.json(rows);
+            }
+        })
+    }
+    
+    ;
 });
 
 
