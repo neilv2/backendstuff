@@ -9,6 +9,14 @@ var Crud = {
 
         var parsedInt; 
        
+
+
+        if (parameters.length == 0){
+            str= "CALL " + procedureName + "()";
+            return db.query( str, callback);
+        }
+
+
         //check for if parameter is an int, and concatenating passed arguments
         parsedInt = parseFloat(parameters[0].parameter);
 
