@@ -1,0 +1,43 @@
+{
+	"id": "a8d1ea83-e1f6-4ce3-ab5c-98c4fc742f5c",
+	"name": "hi",
+	"allTests": [],
+	"timestamp": "2019-10-30T03:49:46.363Z",
+	"collection_id": "be8f321d-e891-4a6b-8363-f47039489f0d",
+	"folder_id": 0,
+	"target_type": "collection",
+	"environment_id": "0",
+	"data": [],
+	"delay": 0,
+	"count": 4,
+	"collection": {
+		"id": "be8f321d-e891-4a6b-8363-f47039489f0d",
+		"name": "hi",
+		"order": [
+			"19aa272a-5e39-47e9-8df0-bd28ef506103",
+			"bda13221-9f3a-4de4-9c10-7b40bd0ce364"
+		],
+		"folders_order": [
+			"467c7063-9000-4367-9e9f-90a5371688bd"
+		],
+		"isFavorite": false
+	},
+	"folder": null,
+	"environment": null,
+	"globals": [],
+	"results": [],
+	"totalPass": 0,
+	"totalFail": 0,
+	"totalTime": 0,
+	"lifecycle": "done",
+	"requests": [
+		{
+			"name": "hi",
+			"id": "19aa272a-5e39-47e9-8df0-bd28ef506103",
+			"url": "{{url}}/hi",
+			"time": 0,
+			"testPassFailCounts": {}
+		}
+	],
+	"synced": false
+}
