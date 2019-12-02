@@ -16,9 +16,26 @@ MongoClient.connect(url, function(err, db){
     { userID: '9', PlanName: 'I', PlanID: '90', ActivityIDs: '129'},
     { userID: '10', PlanName: 'J', PlanID: '01', ActivityIDs: '130'}
   ];
+
+  //Create collection
   dbo.createCollection("plans", function(err, res) {
     if (err) throw err;
     console.log("Collection created!");
     db.close();
   });
+
+
+  //Find all of a user's "plans" based on their username
+  dbo.collection("plans").find({}).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+
+
+  //Insert activities into a specific plan (this can be by index or by name)
+
+  //Delete activities from a specific plan
+
+  //Delete a plan by name
 });
