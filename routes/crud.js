@@ -42,7 +42,7 @@ router.get('/', function (req, res, next) {
                   console.log("fuckyou");
                   res.json(rows);
               }
-        }
+        })}
         else {
             crud.procedure(req.body.ProcedureType, req.body.parameters, function (err, rows) {
                 if (err) {
@@ -90,6 +90,17 @@ router.post('/', function (req, res, next) {
             res.json({id: results.insertId, values: req.body.parameters[0]});//or return count for 1 &amp;amp;amp; 0
         }
     })}
+    else if (req.body.ProcedureType == "MongoCRUD"){
+        console.log("potato");
+    mongo_crud.insert(req.body.parameters[0], req.query.t, function (err, results) {
+        //catch errors
+        if (err) {
+            res.json(err);
+        }
+        else {
+            res.json({id: results.insertId, values: req.body.parameters[0]});//or return count for 1 &amp;amp;amp; 0
+        }
+    })}
     else{
 
         crud.procedure(req.body.ProcedureType, req.body.parameters, function (err, rows) {
@@ -126,6 +137,17 @@ router.delete('/', function (req, res, next) {
         }
 
     })}
+    else if (req.body.ProcedureType == "MongoCRUD"){
+    mongo_crud.delete(req.body.parameters[0], req.query.t, function (err, results) {
+        if (err) {
+            res.json(err);
+        }
+        else {
+
+            res.json({id: results.insertId, values: req.body.parameters[0]});
+        }
+
+    })}
     else{
 
         crud.procedure(req.body.ProcedureType, req.body.parameters, function (err, rows) {
@@ -151,6 +173,15 @@ router.put('/', function (req, res, next) {
     //if the request type is CRUD, do the CRUD operation
     if (req.body.ProcedureType == "CRUD"){
     crud.update(req.body.parameters[1], req.query.t, req.body.parameters[0], function (err, results) {
+        if (err) {
+            res.json(err);
+        }
+        else {
+            res.json(results);
+        }
+    })}
+    else if (req.body.ProcedureType == "MongoCRUD"){
+    mongo_crud.update(req.body.parameters[1], req.query.t, req.body.parameters[0], function (err, results) {
         if (err) {
             res.json(err);
         }
