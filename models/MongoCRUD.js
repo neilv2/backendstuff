@@ -26,7 +26,7 @@ MongoClient.connect(url, function(err, db){
 
 
   //Find all of a user's "plans" based on their username
-  dbo.collection("plans").find({}, {match: userID}, {projection: {_id: 0, userID: 1, PlanName: 1, PlanID: 1, ActivityIDs: 1}}).toArray(function(err, result) {
+  dbo.collection("plans").find({}, {match: userID = }, {projection: {_id: 0, userID: 1, PlanName: 1, PlanID: 1, ActivityIDs: 1}}).toArray(function(err, result) {
     if (err) throw err;
     console.log(result);
     db.close();
@@ -34,8 +34,26 @@ MongoClient.connect(url, function(err, db){
 
 
   //Insert activities into a specific plan (this can be by index or by name)
+  var myobj = ; //User input goes here for the specific plan
+  dbo.collection("plans").insertOne(myobj, function(err, res) {
+    if (err) throw err;
+    console.log("1 document inserted");
+    db.close();
+  });
 
   //Delete activities from a specific plan
+  var myquery = ; // User input goes here
+  dbo.collection("customers").deleteOne(myquery, function(err, obj) {
+    if (err) throw err;
+    console.log("1 document deleted");
+    db.close();
+  });
 
   //Delete a plan by name
+  var myquery = ; // User input goes here
+  dbo.collection("customers").deleteOne(myquery, function(err, obj) {
+    if (err) throw err;
+    console.log("1 document deleted");
+    db.close();
+  });
 });
