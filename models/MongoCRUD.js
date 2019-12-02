@@ -26,7 +26,7 @@ MongoClient.connect(url, function(err, db){
 
 
   //Find all of a user's "plans" based on their username
-  dbo.collection("plans").find({}, {projection: {_id: 0, userID: 1, PlanName: 1, PlanID: 1, ActivityIDs: 1}}).toArray(function(err, result) {
+  dbo.collection("plans").find({}, {match: userID}, {projection: {_id: 0, userID: 1, PlanName: 1, PlanID: 1, ActivityIDs: 1}}).toArray(function(err, result) {
     if (err) throw err;
     console.log(result);
     db.close();
