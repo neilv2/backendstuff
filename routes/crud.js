@@ -11,12 +11,12 @@ var messageError = {
 
 router.get('/', function (req, res, next) {
 
-    
+
     if (req.query.t === undefined) {
         res.json(messageError);
         return
-    }   
-    
+    }
+
 
     if (Object.keys(req.body).length != 0) {
 
@@ -33,8 +33,17 @@ router.get('/', function (req, res, next) {
                 res.json(rows);
             }
         })}
-        else{
-            
+        else if(req.body.ProcedureType == "MongoCRUD"){
+          mongo_crud.getByParams(req.body.parameters[0], req.query.t, function (err, rows) {
+              if (err) {
+                  res.json(err);
+              }
+              else {
+                  console.log("fuckyou");
+                  res.json(rows);
+              }
+        }
+        else {
             crud.procedure(req.body.ProcedureType, req.body.parameters, function (err, rows) {
                 if (err) {
                     res.json(err);
@@ -47,8 +56,8 @@ router.get('/', function (req, res, next) {
         ;
 
 
-    } 
-    //if the get request did not have a body, get all. 
+    }
+    //if the get request did not have a body, get all.
     else {
         crud.get(req.query.t, function (err, rows) {
             if (err) {
@@ -82,7 +91,7 @@ router.post('/', function (req, res, next) {
         }
     })}
     else{
-            
+
         crud.procedure(req.body.ProcedureType, req.body.parameters, function (err, rows) {
             if (err) {
                 res.json(err);
@@ -92,7 +101,7 @@ router.post('/', function (req, res, next) {
             }
         })
     }
-    
+
     ;
 });
 
@@ -112,13 +121,13 @@ router.delete('/', function (req, res, next) {
             res.json(err);
         }
         else {
-            
+
             res.json({id: results.insertId, values: req.body.parameters[0]});
         }
 
     })}
     else{
-            
+
         crud.procedure(req.body.ProcedureType, req.body.parameters, function (err, rows) {
             if (err) {
                 res.json(err);
@@ -150,7 +159,7 @@ router.put('/', function (req, res, next) {
         }
     })}
     else{
-            
+
         crud.procedure(req.body.ProcedureType, req.body.parameters, function (err, rows) {
             if (err) {
                 res.json(err);
@@ -160,7 +169,7 @@ router.put('/', function (req, res, next) {
             }
         })
     }
-    
+
     ;
 });
 
