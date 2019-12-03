@@ -54,7 +54,7 @@ var mongo_crud = {
       MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db("mydb");
-        dbo.collection(table).deleteMany(values, callback);
+        dbo.collection(table).deleteOne(values, callback);
       });
             
     },
