@@ -101,6 +101,45 @@ router.post('/', function (req, res, next) {
             res.json({id: results.insertId, values: req.body.parameters[0]});//or return count for 1 &amp;amp;amp; 0
         }
     })}
+    else if (req.body.ProcedureType == "MySQL_find"){
+        if (req.body.parameters.length != 0){
+        crud.getByParams(req.body.parameters[0], req.query.t, function (err, rows) {
+            if (err) {
+                res.json(err);
+            }
+            else {
+                console.log("fuckyou");
+                res.json(rows);
+            }
+        })
+
+        
+    }
+    else {
+        crud.get(req.query.t, function (err, rows) {
+            if (err) {
+                res.json(err);
+            }
+            else {
+                res.json(rows);
+            }
+        });
+    }
+    }
+    else if(req.body.ProcedureType == "Mongo_find"){
+          mongo_crud.getByParams(req.body.parameters[0], req.query.t, function (err, rows) {
+              if (err) {
+                  res.json(err);
+              }
+              else {
+                  console.log("fuckyou");
+                  res.json(rows);
+              }
+        })}
+
+
+
+
     else{
 
         crud.procedure(req.body.ProcedureType, req.body.parameters, function (err, rows) {
