@@ -29,7 +29,6 @@ router.get('/', function (req, res, next) {
                 res.json(err);
             }
             else {
-                console.log("fuckyou");
                 res.json(rows);
             }
         })}
@@ -39,7 +38,6 @@ router.get('/', function (req, res, next) {
                   res.json(err);
               }
               else {
-                  console.log("fuckyou");
                   res.json(rows);
               }
         })}
@@ -76,11 +74,9 @@ router.post('/', function (req, res, next) {
         res.json(messageError);
         return
     }
-    console.log("potato");
 
     //if the request type is CRUD, do the CRUD operation
     if (req.body.ProcedureType == "CRUD"){
-        console.log("potato");
     crud.insert(req.body.parameters[0], req.query.t, function (err, results) {
         //catch errors
         if (err) {
@@ -91,8 +87,8 @@ router.post('/', function (req, res, next) {
         }
     })}
     else if (req.body.ProcedureType == "MongoCRUD"){
-        console.log("potato");
-    mongo_crud.insert(req.body.parameters[0], req.query.t, function (err, results) {
+
+        mongo_crud.insert(req.body.parameters[0], req.query.t, function (err, results) {
         //catch errors
         if (err) {
             res.json(err);
@@ -107,8 +103,7 @@ router.post('/', function (req, res, next) {
             if (err) {
                 res.json(err);
             }
-            else {
-                console.log("fuckyou");
+            else {  
                 res.json(rows);
             }
         })
@@ -132,7 +127,6 @@ router.post('/', function (req, res, next) {
                   res.json(err);
               }
               else {
-                  console.log("fuckyou");
                   res.json(rows);
               }
         })}

@@ -27,17 +27,14 @@ var Crud = {
         str+= parameters[0].parameter;
         else    
         str+="\""+parameters[0].parameter+"\"";
-        console.log(str);
 
 		for (let index = 1; index < parameters.length; index++) {
-            console.log(parameters[index].parameter);
             parsedInt = parseFloat(parameters[index].parameter);
             if (!isNaN(parsedInt))
                 str+=", "+parsedInt;
             else    
                 str+=", \""+parameters[index].parameter+"\"";
                 
-        console.log(str);
         }   
         str += ")";
         return db.query( str, callback);
@@ -47,8 +44,7 @@ var Crud = {
         return db.query("SELECT * FROM " + table, callback);
     },
     getByParams: function (values, table, callback) {
-		console.log(values);
-		console.log([values]);
+
 
         return db.query("SELECT * FROM " + table + " WHERE ?", [values], callback);
     },
