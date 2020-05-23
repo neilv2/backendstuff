@@ -1,5 +1,7 @@
 # README #
 
+This thing is kind of an abomination and not secure in any way at all, but just a demonstration of some basic backend knowledge stuff I have gathered from googling and stuff. 
+
 things should do 
 $ npm install
 **For use exemplo:**
